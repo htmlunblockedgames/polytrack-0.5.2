@@ -37956,6 +37956,14 @@
             kC(this, vC, null, "f"),
             setTimeout(( () => {
                 if (!i.isCancelled) {
+                    if (null === EC(this, pC, "f")) {
+                        const e = document.createElement("p");
+                        e.className = "error-message",
+                        e.textContent = EC(this, XT, "f").get("Custom tracks do not have leaderboards"),
+                        EC(this, sC, "f").appendChild(e),
+                        EC(this, sC, "f").removeChild(EC(this, oC, "f"));
+                        return
+                    }
                     const n = 20
                       , r = EC(this, fC, "f") * n;
                     EC(this, ZT, "f").getLeaderboard(EC(this, $T, "f").getCurrentUserProfile().tokenHash, EC(this, YT, "f"), r, n, null).then(( ({total: a, entries: s, userEntry: o}) => {
@@ -42479,8 +42487,10 @@
                     if (null == a)
                         return null;
                     kB(this, fB, "f").saveRecord(e, a.tokenHash, t, null, i, r, kB(this, mB, "f").determinismState);
-                    const s = yield kB(this, pB, "m", yB).call(this, e, t, n, i, r).catch((e => (console.warn(e),
-                    null)));
+                    let s = null;
+                    if (null != n)
+                        s = yield kB(this, pB, "m", yB).call(this, e, t, n, i, r).catch((e => (console.warn(e),
+                        null)));
                     for (const e of kB(this, wB, "f"))
                         e();
                     return s
