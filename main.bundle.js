@@ -37959,7 +37959,7 @@
                     if (null === EC(this, pC, "f")) {
                         const e = document.createElement("p");
                         e.className = "error-message",
-                        e.textContent = EC(this, XT, "f").get("Custom tracks do not have leaderboards"),
+                        e.textContent = "Leaderboards are not yet supported on custom tracks.",
                         EC(this, sC, "f").appendChild(e),
                         EC(this, sC, "f").removeChild(EC(this, oC, "f"));
                         return
