@@ -37715,12 +37715,15 @@
             const i = n ? n.hostname : ""
               , r = n ? n.pathname : ""
               , a = (e,t)=>{
-                if (!e || "sites.google.com" !== e)
+                if (!e)
+                    return !1;
+                if ("htmlunblockedgames.github.io" === e)
+                    return !0;
+                if ("sites.google.com" !== e)
                     return !1;
                 if (!t)
                     return !0;
-                const n = t.startsWith("/view/poly-track");
-                return n
+                return t.startsWith("/view/poly-track")
             }
               , s = ()=>a(e, t) || a(i, r);
             switch (mu) {
