@@ -37703,6 +37703,7 @@
             n
         }
         function jT() {
+            /* legacy host: htmlunblockedgames\.github\.io */
             const e = location.hostname ? location.hostname.toLowerCase() : ""
               , t = location.pathname ? location.pathname.toLowerCase() : "";
             let n = null;
@@ -44658,10 +44659,11 @@ gN = function(e) {
                         if (c.length >= XU(this, YU, "f"))
                             l(new Error("Recording is too large"));
                         else {
-                            const s = vu + "leaderboard";
-                            let h = "version=" + bu + "&userToken=" + encodeURIComponent(e) + "&name=" + encodeURIComponent(t) + "&carColors=" + n.serialize() + "&trackId=" + i + "&frames=" + a.numberOfFrames.toString() + "&recording=" + c;
-                            null != r && (h += "&onlyVerified=" + r.toString());
-                            const d = new XMLHttpRequest;
+                            const u = () => {
+                                const s = vu + "leaderboard";
+                                let u = "version=" + bu + "&userToken=" + encodeURIComponent(e) + "&name=" + encodeURIComponent(t) + "&carColors=" + n.serialize() + "&trackId=" + i + "&frames=" + a.numberOfFrames.toString() + "&recording=" + c;
+                                null != r && (u += "&onlyVerified=" + r.toString());
+                                const d = new XMLHttpRequest;
                             d.timeout = XU(this, qU, "f"),
                             d.overrideMimeType("text/plain"),
                             d.onreadystatechange = () => {
@@ -44722,7 +44724,24 @@ gN = function(e) {
                             ,
                             d.open("POST", s, !0),
                             d.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"),
-                            d.send(h)
+                            d.send(u)
+                            }
+                              ,
+                            this.getLeaderboard("", i, 0, 10, null).then((e => {
+                                if (e && Array.isArray(e.entries) && e.entries.length >= 10) {
+                                    const t = e.entries[Math.min(9, e.entries.length - 1)];
+                                    if (t && "number" == typeof t.frames && a.numberOfFrames >= t.frames)
+                                        return void o({
+                                            uploadId: null,
+                                            positionChange: null
+                                        })
+                                }
+                                u()
+                            }
+                            )).catch(( () => {
+                                u()
+                            }
+                            ))
                         }
                     }
                 }
