@@ -56,10 +56,8 @@ Run it before every deploy to catch regressions without reopening the bundle.
 
 Out of the box, the bundle treats these origins as “official”:
 
-- `kodub.com` (any subdomain)
-- `htmlunblockedgames.github.io` (exact host)
-- `sites.google.com/view/poly-track`
+- `sites.google.com/view/poly-track` (only pages under `/poly-track/`)
 
-Hosting elsewhere will surface the red “unofficial build” banner and may restrict features unless you patch the allow‑list in `main.bundle.js`.
+Hosting anywhere else will surface the red “unofficial build” banner (leaderboards blocked) unless you patch the allow‑list in `main.bundle.js`.
 
 Backend deployment docs now live alongside the Worker source in `../polytrack-backend/README.md`.

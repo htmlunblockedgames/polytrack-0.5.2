@@ -37707,7 +37707,7 @@
             switch (mu) {
             case "kodub":
             case "jest":
-                e = [/\.kodub\.com$/, /^htmlunblockedgames\.github\.io$/];
+                e = [/\.kodub\.com$/, /^sites\.google\.com\/view\/poly-track/];
                 break;
             case "electron":
             case "capacitor":
@@ -37739,7 +37739,7 @@
             case "electron":
             case "capacitor":
             case "jest":
-                e = "https://www.kodub.com/apps/polytrack";
+                e = "https://sites.google.com/view/poly-track/";
                 break;
             case "itch":
                 e = "https://kodub.itch.io/polytrack";
