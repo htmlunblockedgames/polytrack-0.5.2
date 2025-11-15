@@ -44726,8 +44726,9 @@ gN = function(e) {
                             d.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"),
                             d.send(u)
                             };
+                            const h = this;
                             const f = () => {
-                                this.getLeaderboard("", i, 0, 10, null).then((e => {
+                                h.getLeaderboard("", i, 0, 10, null).then((e => {
                                     if (e && Array.isArray(e.entries) && e.entries.length >= 10) {
                                         const t = e.entries[Math.min(9, e.entries.length - 1)];
                                         if (t && "number" == typeof t.frames && a.numberOfFrames >= t.frames)
